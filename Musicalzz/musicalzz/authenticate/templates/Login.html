@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LOGIN IN</title>
+    <!-- ------LINK OF CSS FILE------ -->
+        <link rel="stylesheet" href="{% static 'css/home.css' %}">
+    <link rel="stylesheet" href="{% static 'css/LOGIN.css' %}">
+    <!-- --------------GOOGLE API FONT LINKS--------------- -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sunflower:wght@500&display=swap" rel="stylesheet">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Malayalam:wght@500&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@500&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Major+Mono+Display&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Major+Mono+Display&family=Monofett&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Londrina+Solid&family=Monofett&display=swap" rel="stylesheet">
+</head>
+<style>
+
+body {
+	max-width: 100%;
+	min-height: 100%;
+	background-image: url("{% static 'images/imag9.jpg' %}");
+    overflow: hidden;
+}
+.shift{margin-left:40px}
+</style>
+<body>
+<!-- HEADER SECTION -->
+    <header>
+        <nav class="head">
+            <ul>
+                <li class="music">MUSICALZZ</li>
+                <!-- ----CREATE BLOG LINK----- -->
+
+                {% if user.is_authenticated %}
+                <li><a href="{% url 'authenticate:logout' %}" target="blank" class="create shift" >LOGOUT</a></li>
+                {% else %}
+                <li><a href="{% url 'authenticate:login' %}" target="blank" class="create shift" >LOGIN</a></li>
+                {% endif %}
+                <li><a href="{% url 'authenticate:signup' %}" target="blank" class="create shift" >SIGNUP</a></li>
+            </ul>
+        </nav>
+    </header>
+    <!-- -----CONTAINER---- -->
+    <div class="container">
+        <!-- ---LEFT SECTION OF THE FORM--- -->
+        
+        <!-- -----RIGHT SECTION OF THE FORM----- -->
+        <div class="box2">
+        <form method="POST">
+            {% csrf_token %}
+            <p>Username</p>
+            <input type="text" class="user" name="username">
+            <p>Password</p>
+            <input type="password" class="Password" name="password">
+            <input type="submit" value="SUBMIT" class="submit">
+        </form>
+        </div>
+    </div>
+</body>
+</html>

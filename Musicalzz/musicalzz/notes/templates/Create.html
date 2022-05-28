@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <style>
+        .shift{margin-left:40px}
+    </style>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CREATE</title>
+    <link rel="stylesheet" href="{% static 'css/home.css' %}">
+    <link rel="stylesheet" href="{% static 'css/CREATE.css' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Major+Mono+Display&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Major+Mono+Display&family=Monofett&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Londrina+Solid&family=Monofett&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sunflower:wght@500&display=swap" rel="stylesheet">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@500&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- HEADER SECTION -->
+    <header>
+        <nav class="head">
+            <ul>
+                <li class="music">MUSICALZZ</li>
+                <!-- ----home LINK----- -->
+                <li><a href="{% url 'note:home' %}" target="blank" class="home shift">HOME</a></li>
+                {% if user.is_authenticated %}
+                <li><a href="{% url 'authenticate:logout' %}" target="blank" class="create shift">LOGOUT</a></li>
+                {% else %}
+                <li><a href="{% url 'authenticate:login' %}" target="blank" class="create shift">LOGIN</a></li>
+                {% endif %}
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <div class="container">
+            <div class="box2">
+            <form>
+                <p>Title of the song</p>
+                <input type="text" class="title">
+                <p>Scale of the song</p>
+                <input type="text" class="Scale">
+                <p>Main Notes</p>
+                <input type="Text" class="Notes">
+                <input type="submit" value="Post" class="post">
+                <a href="{% url 'note:home' %}" class="next">Back to Home</a>
+            </form>
+            </div>
+        </div>
+    </main>
+
+</body>
